@@ -1,0 +1,234 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://refresh.png" type="Texture" id=1]
+[ext_resource path="res://GHAttack.tres" type="Theme" id=2]
+[ext_resource path="res://wh_monsters.png" type="Texture" id=3]
+[ext_resource path="res://card.jpg" type="Texture" id=4]
+[ext_resource path="res://rolling.png" type="Texture" id=5]
+[ext_resource path="res://red_arrow.png" type="Texture" id=6]
+[ext_resource path="res://AddCardWindow.gd" type="Script" id=7]
+[ext_resource path="res://green_arrow.png" type="Texture" id=8]
+[ext_resource path="res://blank_icon.png" type="Texture" id=9]
+[ext_resource path="res://plus0_card.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[node name="AddCardWindow" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 2 )
+alignment = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpBar" type="HBoxContainer" parent="."]
+margin_right = 576.0
+margin_bottom = 96.0
+
+[node name="UpLeft" type="TextureButton" parent="UpBar"]
+margin_left = 23.0
+margin_right = 119.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 6
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+expand = true
+flip_v = true
+
+[node name="UpMain" type="TextureButton" parent="UpBar"]
+margin_left = 240.0
+margin_right = 336.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 2.0
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+expand = true
+flip_v = true
+
+[node name="UpRight" type="TextureButton" parent="UpBar"]
+margin_left = 457.0
+margin_right = 553.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 6
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+expand = true
+flip_v = true
+
+[node name="UpSeparator" type="HSeparator" parent="."]
+margin_top = 100.0
+margin_right = 576.0
+margin_bottom = 104.0
+custom_styles/separator = SubResource( 4 )
+
+[node name="BuildCard" type="TextureRect" parent="."]
+margin_top = 108.0
+margin_right = 576.0
+margin_bottom = 498.0
+rect_min_size = Vector2( 576, 390 )
+size_flags_horizontal = 4
+texture = ExtResource( 4 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildMain" type="TextureRect" parent="BuildCard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+stretch_mode = 1
+
+[node name="BuildLeft" type="TextureRect" parent="BuildCard"]
+visible = false
+anchor_left = 0.13
+anchor_top = 0.5
+anchor_right = 0.13
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildRight" type="TextureRect" parent="BuildCard"]
+visible = false
+anchor_left = 0.87
+anchor_top = 0.5
+anchor_right = 0.87
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="BuildBlank" type="TextureRect" parent="BuildCard"]
+anchor_left = 0.135
+anchor_top = 0.797
+anchor_right = 0.135
+anchor_bottom = 0.797
+margin_left = -26.0
+margin_top = -26.0
+margin_right = 26.0
+margin_bottom = 26.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="BuildIcon" type="TextureRect" parent="BuildCard"]
+anchor_left = 0.135
+anchor_top = 0.797
+anchor_right = 0.135
+anchor_bottom = 0.797
+margin_left = -18.0
+margin_top = -18.0
+margin_right = 18.0
+margin_bottom = 18.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="DownSeparator" type="HSeparator" parent="."]
+margin_top = 502.0
+margin_right = 576.0
+margin_bottom = 506.0
+custom_styles/separator = SubResource( 5 )
+
+[node name="DownBar" type="HBoxContainer" parent="."]
+margin_top = 510.0
+margin_right = 576.0
+margin_bottom = 606.0
+
+[node name="DownLeft" type="TextureButton" parent="DownBar"]
+margin_left = 23.0
+margin_right = 119.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 6
+disabled = true
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+expand = true
+
+[node name="DownMain" type="TextureButton" parent="DownBar"]
+margin_left = 240.0
+margin_right = 336.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 2.0
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+expand = true
+
+[node name="DownRight" type="TextureButton" parent="DownBar"]
+margin_left = 457.0
+margin_right = 553.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 6
+disabled = true
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 6 )
+expand = true
+
+[node name="ButtonSeparator" type="HSeparator" parent="."]
+margin_top = 610.0
+margin_right = 576.0
+margin_bottom = 614.0
+custom_styles/separator = SubResource( 6 )
+
+[node name="ButtonBar" type="HBoxContainer" parent="."]
+margin_top = 618.0
+margin_right = 576.0
+margin_bottom = 681.0
+
+[node name="AddCard" type="Button" parent="ButtonBar"]
+margin_right = 286.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 7 )
+text = "Add Card"
+
+[node name="Cancel" type="Button" parent="ButtonBar"]
+margin_left = 290.0
+margin_right = 576.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 8 )
+text = "Cancel"
+
+[connection signal="pressed" from="UpBar/UpLeft" to="." method="_on_UpLeft_pressed"]
+[connection signal="pressed" from="UpBar/UpMain" to="." method="_on_UpMain_pressed"]
+[connection signal="pressed" from="UpBar/UpRight" to="." method="_on_UpRight_pressed"]
+[connection signal="pressed" from="DownBar/DownLeft" to="." method="_on_DownLeft_pressed"]
+[connection signal="pressed" from="DownBar/DownMain" to="." method="_on_DownMain_pressed"]
+[connection signal="pressed" from="DownBar/DownRight" to="." method="_on_DownRight_pressed"]
+[connection signal="pressed" from="ButtonBar/AddCard" to="." method="_on_AddCard_pressed"]
+[connection signal="pressed" from="ButtonBar/Cancel" to="." method="_on_Cancel_pressed"]

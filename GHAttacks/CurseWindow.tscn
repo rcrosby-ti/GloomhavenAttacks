@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://bg2.png" type="Texture" id=1]
+[ext_resource path="res://GHAttack.tres" type="Theme" id=2]
+[ext_resource path="res://curse.png" type="Texture" id=3]
+[ext_resource path="res://GHBigFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://CurseWindow.gd" type="Script" id=5]
+[ext_resource path="res://GHFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://GHFlatBox.tres" type="StyleBox" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 1, 1, 1, 1 )
+grow_begin = -10.0
+grow_end = -10.0
+thickness = 3
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="CurseWindow" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 2 )
+custom_styles/panel = ExtResource( 7 )
+script = ExtResource( 5 )
+
+[node name="CurseBack" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 430.0
+margin_bottom = 360.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="CurseContainer" type="VBoxContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 430.0
+margin_bottom = 360.0
+
+[node name="CurseText" type="HBoxContainer" parent="CurseContainer"]
+margin_right = 426.0
+margin_bottom = 104.0
+grow_horizontal = 2
+custom_constants/separation = 10
+
+[node name="CurseIcon" type="TextureRect" parent="CurseContainer/CurseText"]
+margin_right = 104.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 104, 104 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="CurseQuestion" type="Label" parent="CurseContainer/CurseText"]
+margin_left = 114.0
+margin_right = 426.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 4 )
+text = "Add Curse?"
+
+[node name="CurseButtons" type="HBoxContainer" parent="CurseContainer"]
+margin_top = 108.0
+margin_right = 426.0
+margin_bottom = 212.0
+
+[node name="YesButton" type="Button" parent="CurseContainer/CurseButtons"]
+margin_right = 211.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 1 )
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="CurseContainer/CurseButtons"]
+margin_left = 215.0
+margin_right = 426.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 2 )
+text = "No"
+
+[node name="HSeparator" type="HSeparator" parent="CurseContainer"]
+margin_top = 216.0
+margin_right = 426.0
+margin_bottom = 248.0
+custom_constants/separation = 32
+custom_styles/separator = SubResource( 4 )
+
+[node name="SixthButton" type="Button" parent="CurseContainer"]
+margin_top = 252.0
+margin_right = 426.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 0, 104 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/normal = SubResource( 5 )
+text = "Yes, sixth from top"
+
+[connection signal="pressed" from="CurseContainer/CurseButtons/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="CurseContainer/CurseButtons/NoButton" to="." method="_on_NoButton_pressed"]
+[connection signal="pressed" from="CurseContainer/SixthButton" to="." method="_on_SixthButton_pressed"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GHAttack.tres" type="Theme" id=1]
+[ext_resource path="res://ChooseWindow.gd" type="Script" id=2]
+[ext_resource path="res://bg2.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 600, 1024 )
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="ChooseWindow" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="ChosenGrid" type="GridContainer" parent="."]
+margin_top = 95.0
+margin_right = 600.0
+margin_bottom = 95.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.0
+custom_constants/vseparation = 8
+columns = 5
+
+[node name="DeckPanel" type="PanelContainer" parent="."]
+margin_top = 194.0
+margin_right = 600.0
+margin_bottom = 957.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="DeckGrid" type="GridContainer" parent="DeckPanel"]
+margin_top = 381.0
+margin_right = 600.0
+margin_bottom = 381.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_constants/vseparation = 7
+columns = 5
+
+[node name="ButtonBar" type="HBoxContainer" parent="."]
+margin_top = 961.0
+margin_right = 600.0
+margin_bottom = 1024.0
+size_flags_horizontal = 3
+
+[node name="ClearAll" type="Button" parent="ButtonBar"]
+margin_right = 298.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+text = "Clear All"
+
+[node name="Done" type="Button" parent="ButtonBar"]
+margin_left = 302.0
+margin_right = 600.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 2 )
+text = "Done"
+
+[connection signal="pressed" from="ButtonBar/ClearAll" to="." method="_on_ClearAll_pressed"]
+[connection signal="pressed" from="ButtonBar/Done" to="." method="_on_Done_pressed"]
