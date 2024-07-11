@@ -11,8 +11,7 @@ https://boardgamegeek.com/thread/1733586/files-for-creation/page/1
 
 # The Remainder
 
-The remainder of the project is covered by the Unlicense
-license:
+The remainder of the project is covered by the Unlicense:
 
 This is free and unencumbered software released into the public domain.
 
