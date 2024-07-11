@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GHAttack.tres" type="Theme" id=1]
+[ext_resource path="res://bg2.png" type="Texture" id=2]
+[ext_resource path="res://GHBigFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://NoneEndWindow.gd" type="Script" id=4]
+[ext_resource path="res://GHFlatBox.tres" type="StyleBox" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="NoneEndWindow" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 14.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 5 )
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 430.0
+margin_bottom = 343.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 430.0
+margin_bottom = 343.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="NoneContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 416.0
+margin_bottom = 329.0
+
+[node name="Label" type="Label" parent="MarginContainer/NoneContainer"]
+margin_right = 406.0
+margin_bottom = 211.0
+custom_fonts/font = ExtResource( 3 )
+text = "No decks need
+to be shuffled."
+align = 1
+
+[node name="Button" type="Button" parent="MarginContainer/NoneContainer"]
+margin_top = 215.0
+margin_right = 406.0
+margin_bottom = 319.0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 2 )
+text = "OK"
+
+[connection signal="pressed" from="MarginContainer/NoneContainer/Button" to="." method="_on_Button_pressed"]
