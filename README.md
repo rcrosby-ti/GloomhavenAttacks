@@ -16,8 +16,11 @@ properly with the text.
 
 ## Installation
 
-Create a Gogot project using the files in the GHAttacks
-directory.
+An Android APK for the app is available at:
+https://tinyinsight.com/downloads/GHAttacks.apk
+
+To run the app in the Godot editor, create a Gogot project
+using the files in the GHAttacks directory.
 
 To create the customized version of Godot 3.5.2, follow the
 directions in the Godot docs to build Godot and then
