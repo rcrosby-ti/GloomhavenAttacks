@@ -23,6 +23,6 @@ To run the app in the Godot editor, create a Gogot project
 using the files in the GHAttacks directory.
 
 To create the customized version of Godot 3.5.2, follow the
-directions in the Godot docs to build Godot and then
-substitute in the modified rich_text_label.cpp in
-godot-3.5.2-stable/scene/gui.
+directions in the Godot docs to build Godot 3.5.2 from
+source code and then substitute in the modified
+rich_text_label.cpp in godot-3.5.2-stable/scene/gui.
