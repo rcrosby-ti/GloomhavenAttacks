@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://GHBigFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://bg2.png" type="Texture" id=2]
+[ext_resource path="res://ShuffleMenu.gd" type="Script" id=3]
+[ext_resource path="res://GHAttack.tres" type="Theme" id=4]
+[ext_resource path="res://GHFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://GHFlatBox.tres" type="StyleBox" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 1, 1, 1, 1 )
+grow_begin = -10.0
+grow_end = -10.0
+thickness = 3
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="ShuffleMenu" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = ExtResource( 6 )
+script = ExtResource( 3 )
+
+[node name="ShuffleMenuBack" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 328.0
+margin_bottom = 684.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="ShuffleMenuGrid" type="VBoxContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 328.0
+margin_bottom = 684.0
+
+[node name="ShuffleDeck" type="Button" parent="ShuffleMenuGrid"]
+margin_right = 324.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Shuffle"
+
+[node name="UndoCard" type="Button" parent="ShuffleMenuGrid"]
+margin_top = 108.0
+margin_right = 324.0
+margin_bottom = 212.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = " Undo Draw "
+
+[node name="CancelShuffle" type="Button" parent="ShuffleMenuGrid"]
+margin_top = 216.0
+margin_right = 324.0
+margin_bottom = 320.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 4 )
+text = "Cancel"
+
+[node name="HSeparator" type="HSeparator" parent="ShuffleMenuGrid"]
+margin_top = 324.0
+margin_right = 324.0
+margin_bottom = 356.0
+theme = ExtResource( 4 )
+custom_constants/separation = 32
+custom_styles/separator = SubResource( 5 )
+
+[node name="PartialButton" type="Button" parent="ShuffleMenuGrid"]
+margin_top = 360.0
+margin_right = 324.0
+margin_bottom = 464.0
+rect_min_size = Vector2( 0, 104 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/normal = SubResource( 8 )
+text = "Shuffle (partial)"
+
+[node name="PutOnTop" type="Button" parent="ShuffleMenuGrid"]
+margin_top = 468.0
+margin_right = 324.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 0, 104 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Put On Top"
+
+[node name="PutOnBottom" type="Button" parent="ShuffleMenuGrid"]
+margin_top = 576.0
+margin_right = 324.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 0, 104 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/normal = SubResource( 7 )
+text = "Put On Bottom"
+
+[connection signal="pressed" from="ShuffleMenuGrid/ShuffleDeck" to="." method="_on_ShuffleDeck_pressed"]
+[connection signal="pressed" from="ShuffleMenuGrid/UndoCard" to="." method="_on_UndoCard_pressed"]
+[connection signal="pressed" from="ShuffleMenuGrid/CancelShuffle" to="." method="_on_CancelShuffle_pressed"]
+[connection signal="pressed" from="ShuffleMenuGrid/PartialButton" to="." method="_on_PartialButton_pressed"]
+[connection signal="pressed" from="ShuffleMenuGrid/PutOnTop" to="." method="_on_PutOnTop_pressed"]
+[connection signal="pressed" from="ShuffleMenuGrid/PutOnBottom" to="." method="_on_PutOnBottom_pressed"]
