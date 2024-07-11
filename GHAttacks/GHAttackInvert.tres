@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://GHFontInvert.tres" type="DynamicFont" id=1]
+[ext_resource path="res://unchecked.png" type="Texture" id=2]
+[ext_resource path="res://checked.png" type="Texture" id=3]
+[ext_resource path="res://GHEmptyBox.tres" type="StyleBox" id=4]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.2 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/styles/disabled = ExtResource( 4 )
+Button/styles/focus = ExtResource( 4 )
+Button/styles/hover = ExtResource( 4 )
+Button/styles/normal = ExtResource( 4 )
+Button/styles/pressed = ExtResource( 4 )
+CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 0.2 )
+CheckBox/colors/font_color_focus = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+CheckBox/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+CheckBox/icons/checked = ExtResource( 3 )
+CheckBox/icons/unchecked = ExtResource( 2 )
+CheckBox/styles/disabled = ExtResource( 4 )
+CheckBox/styles/focus = ExtResource( 4 )
+CheckBox/styles/hover = ExtResource( 4 )
+CheckBox/styles/hover_pressed = ExtResource( 4 )
+CheckBox/styles/normal = ExtResource( 4 )
+CheckBox/styles/pressed = ExtResource( 4 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/styles/normal = ExtResource( 4 )
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0, 0, 0, 0.8 )
+RichTextLabel/styles/focus = ExtResource( 4 )
+RichTextLabel/styles/normal = ExtResource( 4 )

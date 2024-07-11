@@ -1,0 +1,112 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://bg1.png" type="Texture" id=1]
+[ext_resource path="res://PlayWindow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ChooseWindow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://AddCardWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EditWindow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GHAttacks.gd" type="Script" id=6]
+[ext_resource path="res://TopMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ShuffleMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://CurseWindow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://BlessWindow.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ResetWindow.tscn" type="PackedScene" id=11]
+[ext_resource path="res://PrefsWindow.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActiveWindow.tscn" type="PackedScene" id=13]
+[ext_resource path="res://NoneEndWindow.tscn" type="PackedScene" id=14]
+[ext_resource path="res://EndRoundWindow.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PerksWindow.tscn" type="PackedScene" id=16]
+[ext_resource path="res://GHAttack.tres" type="Theme" id=17]
+[ext_resource path="res://PerksFailWindow.tscn" type="PackedScene" id=18]
+
+[node name="GHAttacks" type="TextureRect"]
+theme = ExtResource( 17 )
+texture = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="PlayWindow" parent="." instance=ExtResource( 2 )]
+
+[node name="ChooseWindow" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="EditWindow" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="AddCardWindow" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="TopMenu" parent="." instance=ExtResource( 7 )]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShuffleMenu" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="CurseWindow" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="BlessWindow" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="ResetWindow" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="PrefsWindow" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="ActiveWindow" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="NoneEndWindow" parent="." instance=ExtResource( 14 )]
+visible = false
+
+[node name="EndRoundWindow" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="PerksWindow" parent="." instance=ExtResource( 16 )]
+visible = false
+
+[node name="PerksFailWindow" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[connection signal="change_active_deck" from="PlayWindow" to="." method="_on_PlayWindow_change_active_deck"]
+[connection signal="drop_on_deck" from="PlayWindow" to="." method="_on_PlayWindow_drop_on_deck"]
+[connection signal="show_active" from="PlayWindow" to="." method="_on_PlayWindow_show_active"]
+[connection signal="show_bless" from="PlayWindow" to="." method="_on_PlayWindow_show_bless"]
+[connection signal="show_curse" from="PlayWindow" to="." method="_on_PlayWindow_show_curse"]
+[connection signal="show_menu" from="PlayWindow" to="." method="_on_PlayWindow_show_menu"]
+[connection signal="choose_done" from="ChooseWindow" to="." method="_on_ChooseWindow_choose_done"]
+[connection signal="add_card" from="EditWindow" to="." method="_on_EditWindow_add_card"]
+[connection signal="edit_done" from="EditWindow" to="." method="_on_EditWindow_edit_done"]
+[connection signal="perks_list" from="EditWindow" to="." method="_on_EditWindow_perks_list"]
+[connection signal="reset" from="EditWindow" to="." method="_on_EditWindow_reset"]
+[connection signal="cancel_add" from="AddCardWindow" to="." method="_on_AddCardWindow_cancel_add"]
+[connection signal="do_add" from="AddCardWindow" to="." method="_on_AddCardWindow_do_add"]
+[connection signal="cancel_top" from="TopMenu" to="." method="_on_TopMenu_cancel_top"]
+[connection signal="choose_decks" from="TopMenu" to="." method="_on_TopMenu_choose_decks"]
+[connection signal="edit_deck" from="TopMenu" to="." method="_on_TopMenu_edit_deck"]
+[connection signal="end_of_round" from="TopMenu" to="." method="_on_TopMenu_end_of_round"]
+[connection signal="preferences" from="TopMenu" to="." method="_on_TopMenu_preferences"]
+[connection signal="cancel_shuffle" from="ShuffleMenu" to="." method="_on_ShuffleMenu_cancel_shuffle"]
+[connection signal="put_on_bottom" from="ShuffleMenu" to="." method="_on_ShuffleMenu_put_on_bottom"]
+[connection signal="put_on_top" from="ShuffleMenu" to="." method="_on_ShuffleMenu_put_on_top"]
+[connection signal="shuffle" from="ShuffleMenu" to="." method="_on_ShuffleMenu_shuffle"]
+[connection signal="shuffle_partial" from="ShuffleMenu" to="." method="_on_ShuffleMenu_shuffle_partial"]
+[connection signal="undo_discard" from="ShuffleMenu" to="." method="_on_ShuffleMenu_undo_discard"]
+[connection signal="curse_no" from="CurseWindow" to="." method="_on_CurseWindow_curse_no"]
+[connection signal="curse_sixth" from="CurseWindow" to="." method="_on_CurseWindow_curse_sixth"]
+[connection signal="curse_yes" from="CurseWindow" to="." method="_on_CurseWindow_curse_yes"]
+[connection signal="bless_no" from="BlessWindow" to="." method="_on_BlessWindow_bless_no"]
+[connection signal="bless_yes" from="BlessWindow" to="." method="_on_BlessWindow_bless_yes"]
+[connection signal="reset_no" from="ResetWindow" to="." method="_on_ResetWindow_reset_no"]
+[connection signal="reset_yes" from="ResetWindow" to="." method="_on_ResetWindow_reset_yes"]
+[connection signal="prefs_done" from="PrefsWindow" to="." method="_on_PrefsWindow_prefs_done"]
+[connection signal="active_done" from="ActiveWindow" to="." method="_on_ActiveWindow_active_done"]
+[connection signal="none_end" from="NoneEndWindow" to="." method="_on_NoneEndWindow_none_end"]
+[connection signal="cancel_round" from="EndRoundWindow" to="." method="_on_EndRoundWindow_cancel_round"]
+[connection signal="end_round" from="EndRoundWindow" to="." method="_on_EndRoundWindow_end_round"]
+[connection signal="perks_cancel" from="PerksWindow" to="." method="_on_PerksWindow_perks_cancel"]
+[connection signal="perks_done" from="PerksWindow" to="." method="_on_PerksWindow_perks_done"]
+[connection signal="fail_done" from="PerksFailWindow" to="." method="_on_PerksFailWindow_fail_done"]
