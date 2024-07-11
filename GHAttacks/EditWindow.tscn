@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GHAttack.tres" type="Theme" id=1]
+[ext_resource path="res://bg3.png" type="Texture" id=2]
+[ext_resource path="res://EditWindow.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 600, 1024 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="EditWindow" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="EditPanel" type="PanelContainer" parent="."]
+margin_right = 600.0
+margin_bottom = 890.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+
+[node name="EditScrollBox" type="ScrollContainer" parent="EditPanel"]
+margin_right = 600.0
+margin_bottom = 890.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EditList" type="VBoxContainer" parent="EditPanel/EditScrollBox"]
+
+[node name="EditButtonBar" type="GridContainer" parent="."]
+margin_top = 894.0
+margin_right = 600.0
+margin_bottom = 1024.0
+columns = 2
+
+[node name="PerksList" type="Button" parent="EditButtonBar"]
+margin_right = 298.0
+margin_bottom = 63.0
+custom_styles/normal = SubResource( 5 )
+text = "Perks List"
+
+[node name="Reset" type="Button" parent="EditButtonBar"]
+margin_left = 302.0
+margin_right = 600.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 4 )
+text = "Reset Deck"
+
+[node name="AddNewCard" type="Button" parent="EditButtonBar"]
+margin_top = 67.0
+margin_right = 298.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+text = "Add New Card"
+
+[node name="Done" type="Button" parent="EditButtonBar"]
+margin_left = 302.0
+margin_top = 67.0
+margin_right = 600.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 2 )
+text = "Done"
+
+[connection signal="pressed" from="EditButtonBar/PerksList" to="." method="_on_PerksList_pressed"]
+[connection signal="pressed" from="EditButtonBar/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="EditButtonBar/AddNewCard" to="." method="_on_AddNewCard_pressed"]
+[connection signal="pressed" from="EditButtonBar/Done" to="." method="_on_Done_pressed"]

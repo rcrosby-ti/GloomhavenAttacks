@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GHAttack.tres" type="Theme" id=1]
+[ext_resource path="res://GHBigFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://bg2.png" type="Texture" id=3]
+[ext_resource path="res://EndRoundWindow.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+shadow_size = 10
+shadow_offset = Vector2( 10, 10 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="EndRoundWindow" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 14.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 464.0
+margin_bottom = 347.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 464.0
+margin_bottom = 347.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="EndRoundContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 333.0
+
+[node name="DeckGrid" type="GridContainer" parent="MarginContainer/EndRoundContainer"]
+margin_right = 440.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 5
+
+[node name="ShuffleLabel" type="Label" parent="MarginContainer/EndRoundContainer"]
+margin_top = 4.0
+margin_right = 440.0
+margin_bottom = 215.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Reshuffle these
+decks?"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EndRoundContainer"]
+margin_top = 219.0
+margin_right = 440.0
+margin_bottom = 323.0
+size_flags_horizontal = 3
+
+[node name="YesButton" type="Button" parent="MarginContainer/EndRoundContainer/HBoxContainer"]
+margin_right = 218.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="MarginContainer/EndRoundContainer/HBoxContainer"]
+margin_left = 222.0
+margin_right = 440.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "No"
+
+[connection signal="pressed" from="MarginContainer/EndRoundContainer/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="MarginContainer/EndRoundContainer/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
