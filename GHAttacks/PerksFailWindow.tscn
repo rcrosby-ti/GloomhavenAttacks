@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GHFlatBox.tres" type="StyleBox" id=1]
+[ext_resource path="res://GHAttackInvert.tres" type="Theme" id=2]
+[ext_resource path="res://CardFace.tscn" type="PackedScene" id=3]
+[ext_resource path="res://bg3.png" type="Texture" id=4]
+[ext_resource path="res://GHBigFontInvert.tres" type="DynamicFont" id=5]
+[ext_resource path="res://PerksFailWindow.gd" type="Script" id=6]
+
+[node name="PerksFailWindow" type="PanelContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 14.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 2 )
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 403.0
+margin_bottom = 542.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 403.0
+margin_bottom = 542.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="PerksFailContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 389.0
+margin_bottom = 528.0
+
+[node name="CardFace" parent="MarginContainer/PerksFailContainer" instance=ExtResource( 3 )]
+margin_left = 45.0
+margin_right = 333.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 288, 195 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FailLabel" type="Label" parent="MarginContainer/PerksFailContainer"]
+margin_top = 199.0
+margin_right = 379.0
+margin_bottom = 410.0
+custom_fonts/font = ExtResource( 5 )
+text = "Unable to
+remove card."
+align = 1
+
+[node name="OKButton" type="Button" parent="MarginContainer/PerksFailContainer"]
+margin_top = 414.0
+margin_right = 379.0
+margin_bottom = 518.0
+custom_fonts/font = ExtResource( 5 )
+text = "OK"
+
+[connection signal="pressed" from="MarginContainer/PerksFailContainer/OKButton" to="." method="_on_OKButton_pressed"]

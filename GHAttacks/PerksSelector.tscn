@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GHFontInvert.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GHAttackInvert.tres" type="Theme" id=2]
+[ext_resource path="res://PerksSelector.gd" type="Script" id=3]
+
+[node name="PerksSelector" type="HBoxContainer"]
+margin_right = 580.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 580, 0 )
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="ChecksMargins" type="MarginContainer" parent="."]
+margin_right = 60.0
+margin_bottom = 90.0
+mouse_filter = 2
+
+[node name="PerksChecks" type="GridContainer" parent="ChecksMargins"]
+margin_right = 60.0
+margin_bottom = 90.0
+custom_constants/vseparation = -10
+custom_constants/hseparation = 0
+columns = 2
+
+[node name="CheckBox1" type="CheckBox" parent="ChecksMargins/PerksChecks"]
+margin_right = 60.0
+margin_bottom = 75.0
+
+[node name="TextMargins" type="MarginContainer" parent="."]
+margin_left = 64.0
+margin_right = 580.0
+margin_bottom = 90.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 6
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 5
+
+[node name="PerksText" type="RichTextLabel" parent="TextMargins"]
+margin_top = 6.0
+margin_right = 516.0
+margin_bottom = 85.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[img=0x64]res://plus1.png[/img]ll too easy [img=0x64]res://plus1.png[/img]"
+text = "ll too easy "
+fit_content_height = true
+scroll_active = false

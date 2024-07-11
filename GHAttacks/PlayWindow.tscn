@@ -1,0 +1,307 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://bless.png" type="Texture" id=1]
+[ext_resource path="res://curse.png" type="Texture" id=2]
+[ext_resource path="res://CardFace.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PlayWindow.gd" type="Script" id=4]
+[ext_resource path="res://CardBack.tscn" type="PackedScene" id=5]
+[ext_resource path="res://active.png" type="Texture" id=6]
+[ext_resource path="res://right_arrow.png" type="Texture" id=7]
+[ext_resource path="res://left_arrow.png" type="Texture" id=8]
+[ext_resource path="res://GHAttack.tres" type="Theme" id=11]
+[ext_resource path="res://menu.png" type="Texture" id=12]
+[ext_resource path="res://gray_card.jpg" type="Texture" id=13]
+[ext_resource path="res://GHBigFont.tres" type="DynamicFont" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="PlayWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 11 )
+script = ExtResource( 4 )
+
+[node name="PlayContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayMenuBar" type="HBoxContainer" parent="PlayContainer"]
+margin_right = 600.0
+margin_bottom = 210.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DeckIconGrid" type="GridContainer" parent="PlayContainer/PlayMenuBar"]
+margin_top = 105.0
+margin_right = 500.0
+margin_bottom = 105.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/vseparation = 10
+
+[node name="MenuButton" type="TextureButton" parent="PlayContainer/PlayMenuBar"]
+margin_left = 504.0
+margin_top = 57.0
+margin_right = 600.0
+margin_bottom = 153.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource( 12 )
+
+[node name="DeckPile" type="TextureRect" parent="PlayContainer"]
+margin_left = 12.0
+margin_top = 214.0
+margin_right = 588.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 576, 390 )
+size_flags_horizontal = 4
+texture = ExtResource( 13 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopDeck" parent="PlayContainer/DeckPile" instance=ExtResource( 5 )]
+visible = false
+margin_right = 576.0
+margin_bottom = 390.0
+
+[node name="DeckStatsBar" type="HBoxContainer" parent="PlayContainer/DeckPile"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 64 )
+size_flags_horizontal = 3
+
+[node name="DeckCurses" type="Button" parent="PlayContainer/DeckPile/DeckStatsBar"]
+margin_right = 142.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+shortcut_in_tooltip = false
+text = "0"
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+
+[node name="DeckRemaining" type="Label" parent="PlayContainer/DeckPile/DeckStatsBar"]
+margin_left = 146.0
+margin_right = 430.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "0"
+align = 1
+
+[node name="DeckBlesses" type="Button" parent="PlayContainer/DeckPile/DeckStatsBar"]
+margin_left = 434.0
+margin_right = 576.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "0"
+icon = ExtResource( 1 )
+flat = true
+expand_icon = true
+
+[node name="NeedShuffle" type="Label" parent="PlayContainer/DeckPile"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 14 )
+text = "Shuffle Required"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DecksSeparator" type="HSeparator" parent="PlayContainer"]
+margin_top = 608.0
+margin_right = 600.0
+margin_bottom = 618.0
+rect_min_size = Vector2( 0, 10 )
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiscardPile" type="TextureRect" parent="PlayContainer"]
+margin_left = 12.0
+margin_top = 622.0
+margin_right = 588.0
+margin_bottom = 1012.0
+rect_min_size = Vector2( 576, 390 )
+size_flags_horizontal = 4
+texture = ExtResource( 13 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiscardHint" type="Label" parent="PlayContainer/DiscardPile"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Drag Here To Draw Card
+Drag Back To Shuffle
+Drag To Right To Look Under"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopDiscard" parent="PlayContainer/DiscardPile" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SideDiscard" parent="PlayContainer/DiscardPile" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 500.0
+margin_right = 500.0
+
+[node name="DiscardStatsBar" type="HBoxContainer" parent="PlayContainer/DiscardPile"]
+anchor_right = 1.0
+size_flags_horizontal = 3
+
+[node name="UnusedActive" type="Label" parent="PlayContainer/DiscardPile/DiscardStatsBar"]
+margin_right = 142.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+
+[node name="ActiveCount" type="Button" parent="PlayContainer/DiscardPile/DiscardStatsBar"]
+visible = false
+margin_left = 116.0
+margin_right = 229.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "0"
+icon = ExtResource( 6 )
+flat = true
+expand_icon = true
+
+[node name="DiscardCount" type="Label" parent="PlayContainer/DiscardPile/DiscardStatsBar"]
+margin_left = 240.0
+margin_right = 336.0
+margin_bottom = 63.0
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 2.0
+text = "0 of 0"
+
+[node name="Unused" type="Label" parent="PlayContainer/DiscardPile/DiscardStatsBar"]
+margin_left = 434.0
+margin_right = 576.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+
+[node name="DiscardPush" type="Button" parent="PlayContainer/DiscardPile"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 500.0
+margin_right = 12.0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 4 )
+expand_icon = true
+
+[node name="RightArrow" type="TextureRect" parent="PlayContainer/DiscardPile/DiscardPush"]
+margin_top = 8.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="DiscardPull" type="Button" parent="PlayContainer/DiscardPile"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 500.0
+margin_right = 12.0
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 5 )
+expand_icon = true
+
+[node name="LeftArrow" type="TextureRect" parent="PlayContainer/DiscardPile/DiscardPull"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -72.0
+margin_bottom = -8.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="BottomSeparator" type="HSeparator" parent="PlayContainer"]
+margin_top = 1016.0
+margin_right = 600.0
+margin_bottom = 1024.0
+size_flags_vertical = 8
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragCard" type="Control" parent="."]
+visible = false
+margin_right = 576.0
+margin_bottom = 390.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragBack" parent="DragCard" instance=ExtResource( 5 )]
+visible = false
+rect_pivot_offset = Vector2( 288, 195 )
+
+[node name="DragFace" parent="DragCard" instance=ExtResource( 3 )]
+visible = false
+margin_right = 576.0
+margin_bottom = 390.0
+rect_pivot_offset = Vector2( 288, 195 )
+
+[connection signal="pressed" from="PlayContainer/PlayMenuBar/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="PlayContainer/DeckPile/DeckStatsBar/DeckCurses" to="." method="_on_DeckCurses_pressed"]
+[connection signal="pressed" from="PlayContainer/DeckPile/DeckStatsBar/DeckBlesses" to="." method="_on_DeckBlesses_pressed"]
+[connection signal="pressed" from="PlayContainer/DiscardPile/DiscardStatsBar/ActiveCount" to="." method="_on_ActiveCount_pressed"]
+[connection signal="pressed" from="PlayContainer/DiscardPile/DiscardPush" to="." method="_on_DiscardPush_pressed"]
+[connection signal="pressed" from="PlayContainer/DiscardPile/DiscardPull" to="." method="_on_DiscardPull_pressed"]
